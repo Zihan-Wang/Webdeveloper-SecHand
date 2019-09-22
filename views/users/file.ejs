@@ -1,0 +1,30 @@
+<% include ../partials/header %>
+<div class="card" style="width: 18rem;">
+  <img src="<%= user.avatar %>" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title"><%= user.first  + " " + user.last %></h5>
+    <p class="card-text"></p>
+  </div>
+</div>
+<hr>
+<div>
+	<h5>
+		<%= user.first%>'s Items:
+	</h5>
+</div>
+
+<div class="row">
+		<% campgrounds.forEach(function(cam){ %>
+			<div class="col-md-3 col-sm-6">
+				<div class="card text-center">
+					<img src="<%= cam.image %>" class="img-fluid" alt="image">
+					<div class="card-body">
+						<p class="card-title"><em><%= cam.name %></em>  -  $<%= cam.price %></p>
+						<a href="/campgrounds/<%= cam._id %>" class="btn btn-primary btn-sm">More info</a>
+					</div>
+				</div>
+			</div>
+		<% }) %>
+</div>
+
+<% include ../partials/footer %>

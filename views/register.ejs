@@ -1,0 +1,37 @@
+<% include ./partials/header %>
+
+<div class="row">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="card bg-light mb-5" style="width: 23rem;">
+			  <div class="card-header">Sign up <i class="fas fa-user-plus"></i></div>
+			  <div class="card-body">
+					<div class="form">
+						<form action="/register" method="POST">
+							<label id="signup1" style="color: #24a0d1">Username</label>
+							<input id="signup1" class="form-control item" type="text" name="username" placeholder="username" required>
+							<hr>
+							<label id="signup2" style="color: #24a0d1">Password</label>
+							<input id="signup2" class="form-control item" type="password" name="password" placeholder="password" required>
+							<hr>
+							<label id="signup3" style="color: #24a0d1">Firstname</label>
+							<input id="signup3" class="form-control item" type="text" name="first" placeholder="firstname" required>
+							<hr>
+							<label id="signup4" style="color: #24a0d1">Lastname</label>
+							<input id="signup4" class="form-control item" type="text" name="last" placeholder="lastname" required>
+							<hr>
+							<label id="signup5" style="color: #24a0d1">E-Mail</label>
+							<input id="signup5" class="form-control item" type="email" name="email" placeholder="example@example.com" required>
+							<hr>
+							<label id="signup5" style="color: #24a0d1">Avatar</label>
+							<input id="signup5" class="form-control item" type="text" name="avatar" placeholder="avatar url">
+							<hr>
+							<button  class="btn btn-lg btn-primary btn-block item">
+								Sign Up
+							</button>
+						</form>
+					</div>
+			  </div>
+			</div>	
+		</div>
+<% include ./partials/footer %>

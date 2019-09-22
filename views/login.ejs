@@ -1,0 +1,29 @@
+<% include ./partials/header %>
+<div class="row">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="card bg-light mb-5" style="width: 23rem;">
+			  <div class="card-header">Sign in <i class="fas fa-sign-in-alt"></i></div>
+			  <div class="card-body">
+					<div class="form">
+						<form action="/login" method="POST">
+							<label id="log1" style="color: #24a0d1">Username</label>
+							<input id="log1" class="form-control item" type="text" name="username" placeholder="username">
+							<hr>
+							<label id="log2" style="color: #24a0d1">Password</label>
+							<input id="log2" class="form-control item" type="password" name="password" placeholder="password">
+							<hr>
+							<input type="submit" value="SIGN IN" class="btn btn-lg btn-primary btn-block item">
+						</form>	
+					</div>
+				  <div>
+					  <a href="/register"> register your account</a>
+				  </div>
+				  <div>
+					  <a href="/forgot">forget password?</a>
+				  </div>
+			  </div>
+			</div>	
+		</div>
+
+<% include ./partials/footer %>

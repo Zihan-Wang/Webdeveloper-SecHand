@@ -1,0 +1,32 @@
+<% include ../partials/header %>
+
+<div class="container">
+	<header class="jumbotron" style="background: #e3f2fd">
+		<div class="container" style="text-align:center">
+			<h1>
+				UCSD SecHand!
+			</h1>
+			<p class="mb-5">
+				view what you need or post what you want to sell
+			</p>
+			<p>
+				<a href="/campgrounds/new"><button type="button" class="btn btn-primary btn-lg">Post Your Items Now</button></a>
+			</p>
+		</div>
+	</header>
+	
+	<div class="row">
+		<% campgrounds.forEach(function(cam){ %>
+			<div class="col-md-3 col-sm-6">
+				<div class="card text-center">
+					<img src="<%= cam.image %>" class="img-fluid" alt="image">
+					<div class="card-body">
+						<p class="card-title"><em><%= cam.name %></em>  -  $<%= cam.price %></p>
+						<a href="/campgrounds/<%= cam._id %>" class="btn btn-primary btn-sm">More info</a>
+					</div>
+				</div>
+			</div>
+		<% }) %>
+	</div>
+
+<% include ../partials/footer %>
