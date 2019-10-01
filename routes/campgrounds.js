@@ -1,7 +1,25 @@
 const express    = require("express"),
 	  router     = express.Router(),
 	  Campground = require("../models/campground"),
-	  middleware = require("../middleware");
+	  middleware = require("../middleware"),
+	  cloudinary = require('cloudinary'),
+	  multer = require('multer');
+
+var storage = multer.diskStorage({
+  filename: function(req, file, callback) {
+    callback(null, Date.now() + file.originalname);
+  }
+});
+
+var imageFilter = function (req, file, cb) {
+    // accept image files only
+    if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
+        return cb(new Error('Only image files are allowed!'), false);
+    }
+    cb(null, true);
+};
+
+var upload = multer({ storage: storage, fileFilter: imageFilter});
 
 router.get("/", (req,res) => {
 	var noMatch = null;
@@ -30,25 +48,21 @@ router.get("/", (req,res) => {
 		})
 	}
 })
-router.post("/", middleware.isLoggedIn, (req, res) => {
-	const name = req.body.name
-	const price = req.body.price
-	const image = req.body.image
-	const desc = req.body.description
-	const author = {
-		id: req.user._id,
-		username: req.user.username
-	}
-	const newCampground = {name: name, price: price, image: image, description: desc, author: author}
-	
-	Campground.create(newCampground, (err, newlyCreated) => {
-		if(err){
-			console.log("err");
+router.post("/", middleware.isLoggedIn, upload.single('image'), function(req, res) {
+	cloudinary.uploader.upload(req.file.path, function(result) {
+		req.body.campground.image = result.secure_url;
+		req.body.campground.author = {
+			id: req.user._id,
+			username: req.user.username
 		}
-		else{
-			res.redirect("/campgrounds");
-		}
-	})
+		Campground.create(req.body.campground, function(err, campground) {
+			if (err) {
+				req.flash('error', err.message);
+				return res.redirect('back');
+			}
+			res.redirect('/campgrounds/' + campground.id);
+		});
+	});
 })
 
 router.get("/new", middleware.isLoggedIn, (req,res) => {
@@ -105,5 +119,11 @@ router.delete("/:id", middleware.checkCampOwnership, (req,res)=>{
 function escapeRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 };
+
+cloudinary.config({ 
+  cloud_name: 'aa15171019', 
+  api_key: process.env.CLOUDINARY_API_KEY, 
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
 
 module.exports = router;
