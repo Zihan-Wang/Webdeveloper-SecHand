@@ -40,10 +40,10 @@ body {
 }
 
 .slideshow li:nth-child(1) { 
-  background-image: url(http://i.imgur.com/K3mPv14.jpg) 
+  background-image: url(https://i.imgur.com/2E3E0NL.jpg) 
 }
 .slideshow li:nth-child(2) { 
-  background-image: url(http://i.imgur.com/SBEmFpv.jpg);
+  background-image: url(https://i.imgur.com/3sjw3pK.jpg);
   animation-delay: 10s; 
 }
 .slideshow li:nth-child(3) { 
@@ -51,7 +51,7 @@ body {
   animation-delay: 20s; 
 }
 .slideshow li:nth-child(4) { 
-  background-image: url(http://i.imgur.com/2LSMCmJ.jpg);
+  background-image: url(https://i.imgur.com/8XuNkBr.jpg);
   animation-delay: 30s; 
 }
 .slideshow li:nth-child(5) { 
