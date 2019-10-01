@@ -19,13 +19,14 @@ const commentRoutes    = require("./routes/comments"),
 // seedDB();
 app.use(bodyParser.urlencoded({extended: true}));
 mongoose.set('useNewUrlParser', true);
+mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
 mongoose.set('useFindAndModify', false);
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(flash());
 
-mongoose.connect("mongodb://localhost/yelp_camp");
+mongoose.connect("mongodb+srv://wang:wzh19970113@cluster0-tog9q.mongodb.net/test?retryWrites=true&w=majority");
 
 app.use(require("express-session")({
 	secret: "my name is wang",
