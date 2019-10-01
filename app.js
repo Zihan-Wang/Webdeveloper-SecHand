@@ -26,7 +26,10 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(flash());
 
-mongoose.connect("mongodb+srv://wang:wzh19970113@cluster0-tog9q.mongodb.net/test?retryWrites=true&w=majority");
+mongoose.connect(process.env.DATABASEURL);
+// mongoose.connect("mongodb+srv://wang:wzh19970113@cluster0-tog9q.mongodb.net/test?retryWrites=true&w=majority");
+process.env.databaseURL
+console.log(process.env.DATABASEURL);
 
 app.use(require("express-session")({
 	secret: "my name is wang",
