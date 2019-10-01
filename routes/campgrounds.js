@@ -4,16 +4,31 @@ const express    = require("express"),
 	  middleware = require("../middleware");
 
 router.get("/", (req,res) => {
-	
-	console.log(req.user);
-	Campground.find({}, (err, allCampgrounds)=>{
-		if(err){
-			console.log("err");
-		}
-		else {
-			res.render("campgrounds/index",{campgrounds: allCampgrounds});
-		}
-	})
+	var noMatch = null;
+	if(req.query.search) {
+		 const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+				Campground.find({name: regex}, function(err, allCampgrounds){
+				   if(err){
+					   console.log(err);
+				   } else {
+					  if(allCampgrounds.length < 1) {
+						  noMatch = "No campgrounds match that query, please try again.";
+					  }
+					  res.render("campgrounds/index",{campgrounds:allCampgrounds, noMatch: noMatch});
+				   }
+				});
+	}
+	else {
+		console.log(req.user);
+		Campground.find({}, (err, allCampgrounds)=>{
+			if(err){
+				console.log("err");
+			}
+			else {
+				res.render("campgrounds/index",{campgrounds: allCampgrounds});
+			}
+		})
+	}
 })
 router.post("/", middleware.isLoggedIn, (req, res) => {
 	const name = req.body.name
@@ -87,5 +102,8 @@ router.delete("/:id", middleware.checkCampOwnership, (req,res)=>{
 	})
 })
 
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 module.exports = router;

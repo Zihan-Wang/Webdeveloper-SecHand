@@ -27,7 +27,7 @@ app.use(express.static(__dirname + "/public"));
 app.use(flash());
 
 mongoose.connect(process.env.DATABASEURL);
-// mongoose.connect("mongodb+srv://wang:wzh19970113@cluster0-tog9q.mongodb.net/test?retryWrites=true&w=majority");
+
 console.log(process.env.DATABASEURL);
 
 app.use(require("express-session")({
