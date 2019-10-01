@@ -16,13 +16,13 @@
 	</header>
 	
 	<div class="row">
-		<% sechands.forEach(function(cam){ %>
+		<% sechands.forEach(function(sec){ %>
 			<div class="col-md-3 col-sm-6">
 				<div class="card text-center">
-					<img src="<%= cam.image %>" class="img-fluid" alt="image">
+					<img src="<%= sec.image %>" class="img-fluid" alt="image">
 					<div class="card-body">
-						<p class="card-title"><em><%= cam.name %></em>  -  $<%= cam.price %></p>
-						<a href="/sechands/<%= cam._id %>" class="btn btn-primary btn-sm">More info</a>
+						<p class="card-title"><em><%= sec.name %></em>  -  $<%= sec.price %></p>
+						<a href="/sechands/<%= sec._id %>" class="btn btn-primary btn-sm">More info</a>
 					</div>
 				</div>
 			</div>

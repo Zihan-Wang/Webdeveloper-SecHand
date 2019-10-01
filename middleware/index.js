@@ -1,17 +1,16 @@
 const middlewareObj = {},
-	  Campground = require("../models/campground"),
+	  Sechand = require("../models/sechand"),
 	  Comment = require("../models/comment");
-
-middlewareObj.checkCampOwnership = function(req,res,next){
+middlewareObj.checkSecOwnership = function(req,res,next){
 	if(req.isAuthenticated()){
-		Campground.findById(req.params.id, (err,foundCampground)=>{
+		Sechand.findById(req.params.id, (err,foundSechand)=>{
 			if(err){
 				req.flash("error", "NOT FOUND")
 				console.log("err")
 				res.redirect("back")
 			}
 			else{	
-				if(foundCampground.author.id.equals(req.user._id)){
+				if(foundSechand.author.id.equals(req.user._id)){
 						next();
 				}
 				else {

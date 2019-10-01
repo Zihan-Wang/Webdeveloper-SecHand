@@ -7,10 +7,10 @@
 	<div style="width:30%; margin: 30px auto;">
 		<form action="/sechands/<%= sechand._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
 			<div class="form-group">
-				<input type="text" name="campround[name]" value="<%= sechand.name %>" class="form-control">	
+				<input type="text" name="sechand[name]" value="<%= sechand.name %>" class="form-control">	
 			</div>
 			<div class="form-group">
-				<input type="number" name="campround[price]" value="<%= sechand.price %>" class="form-control">	
+				<input type="number" name="sechand[price]" value="<%= sechand.price %>" class="form-control">	
 			</div>	
 			<div class="form-group">
                     <label for="image">Image</label>

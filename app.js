@@ -25,7 +25,6 @@ mongoose.set('useFindAndModify', false);
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(flash());
-
 mongoose.connect(process.env.DATABASEURL);
 
 console.log(process.env.DATABASEURL);
