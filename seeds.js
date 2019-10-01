@@ -1,5 +1,5 @@
 const mongoose   = require("mongoose"),
-      Campground = require("./models/campground"),
+      Sechand = require("./models/sechand"),
       Comment    = require("./models/comment");
  
 var data = [
@@ -22,7 +22,7 @@ var data = [
  
 function seedDB(){
    //Remove all campgrounds
-   Campground.remove({}, function(err){
+   Sechand.remove({}, function(err){
         if(err){
             console.log(err);
         }

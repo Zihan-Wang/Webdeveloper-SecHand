@@ -124,7 +124,7 @@ router.put("/:id", upload.single('image'), function(req, res){
 
 
 //delete
-router.delete("/:id", middleware.checkEcOwnership, (req,res)=>{
+router.delete("/:id", middleware.checkSecOwnership, (req,res)=>{
 	Sechand.findByIdAndRemove(req.params.id,  async function(err, sechand){
 		if(err){
 			req.flash("error", err.message);
