@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const campSchema = new mongoose.Schema({
+const secSchema = new mongoose.Schema({
 	name: String,
 	price: String,
 	image: String,
@@ -25,4 +25,4 @@ const campSchema = new mongoose.Schema({
 	]
 });
 
-module.exports = mongoose.model("Campground", campSchema);
+module.exports = mongoose.model("Sechand", secSchema);

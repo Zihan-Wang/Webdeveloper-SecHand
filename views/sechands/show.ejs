@@ -6,36 +6,32 @@
 			<p class="lead">
 				SecHand in UCSD
 			</p>
-			<div class="list-group">
-				<li class="list-group-item active">Info 1</li>
-				<li class="list-group-item">Info 2</li>
-				<li class="list-group-item">Info 3</li>
-			</div>
 		</div>
 		<div clas="col-md-9">
 			<div class="card" style="width: 40rem;">
-				<img src = "<%= campground.image%>" class="img-fluid card-img-top" alt="responsive img">
+				<img src = "<%= sechand.image%>" class="img-fluid card-img-top" alt="responsive img">
 				<div class="card-body">
 					<h4 class="float-right card-title">
-						 $ <%= campground.price%>
+						 $ <%= sechand.price%>
 					</h4>
 					<a href=""><h4 class="card-title">
-							<%= campground.name%>
+							<%= sechand.name%>
 					</h4>
 						<hr>
 					</a>
 					<p class="card-text">
-						<%= campground.description%>
+						<%= sechand.description%>
 					</p>
 					<p class="card-text">
-						Submitted By User : 
-						<a href="/users/<%= campground.author.id %>"><span id="username">
-					<%= campground.author.username%> 
-					</span></a>, <em id="time"><%= moment(campground.createdAt).fromNow() %></em>
+						Submitted By :
+						<i class="far fa-user"></i>
+						<a href="/users/<%= sechand.author.id %>"><span id="username">
+					<%= sechand.author.username%> 
+					</span></a>, <em id="time"><%= moment(sechand.createdAt).fromNow() %></em>
 					</p>
-					<% if(currentUser && campground.author.id.equals(currentUser._id)) {%>
-						<a class="btn btn-warning btn-sm" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
-						<form id="delete" action="/campgrounds/<%= campground._id %>?_method=delete" method="post">
+					<% if(currentUser && sechand.author.id.equals(currentUser._id)) {%>
+						<a class="btn btn-warning btn-sm" href="/sechands/<%= sechand._id %>/edit">Edit</a>
+						<form id="delete" action="/sechands/<%= sechand._id %>?_method=delete" method="post">
 							<button class="btn btn-danger btn-sm">
 								Delete
 							</button>
@@ -45,9 +41,9 @@
 			</div>
 			<div class="card">
 				<div class="text-right  card-body ">
-					<a class="btn btn-primary btn-md" href="/campgrounds/<%= campground._id%>/comments/new"><i class="far fa-comment"></i> Add New Comments</a>
+					<a class="btn btn-primary btn-md" href="/sechands/<%= sechand._id%>/comments/new"><i class="far fa-comment"></i> Add New Comments</a>
 				</div>
-				<% campground.comments.forEach(function(comment){ %>
+				<% sechand.comments.forEach(function(comment){ %>
 					<div class="row card-body">
 						<div class="col-md-12">
 						<hr>
@@ -61,8 +57,8 @@
 								<%= comment.text%>
 							</p>
 							<% if(currentUser && comment.author.id.equals(currentUser._id)) {%>
-								<a class="btn btn-sm btn-warning" href="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>/edit">Edit</a>
-								<form id="delete" action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="post">
+								<a class="btn btn-sm btn-warning" href="/sechands/<%=sechand._id%>/comments/<%=comment._id%>/edit">Edit</a>
+								<form id="delete" action="/sechands/<%= sechand._id %>/comments/<%= comment._id %>?_method=DELETE" method="post">
 									<input type="submit" class="btn btn-sm btn-danger" value="Delete">	
 								</form>
 							<% } %>

@@ -1,11 +1,11 @@
 <% include ../partials/header %>
 <div class="container">
 	<h1 style="text-align:center">
-		Add a New comments to <%= campground.name %>
+		Add a New comments to <%= sechand.name %>
 	</h1>
 	
 	<div style="width:30%; margin: 30px auto;">
-		<form action="/campgrounds/<%= campground._id %>/comments" method="POST">
+		<form action="/sechands/<%= sechand._id %>/comments" method="POST">
 			<div class="form-group">
 				<input type="text" name="comment[text]" placeholder="text" class="form-control" required>	
 			</div>						
@@ -15,7 +15,7 @@
 			</button>
 			</div>
 			<div class="form-group">
-				<a href="/campgrounds">Go to back</a>
+				<a href="/sechands">Go to back</a>
 			</div>
 		</form>	
 	</div>

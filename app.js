@@ -3,7 +3,7 @@ const express       = require("express"),
 	  bodyParser    = require("body-parser"),
       mongoose      = require("mongoose"),
 	  passport      = require("passport"),
-      Campground    = require("./models/campground"),
+      Sechand    = require("./models/sechand"),
 	  seedDB        = require("./seeds"),
 	  Comment       = require("./models/comment"),
 	  LocalStrategy = require("passport-local"),
@@ -13,7 +13,7 @@ const express       = require("express"),
 
 
 const commentRoutes    = require("./routes/comments"),
-      campgroundRoutes = require("./routes/campgrounds"),
+      sechandRoutes = require("./routes/sechands"),
       indexRoutes       = require("./routes/index");
 	  
 // seedDB();
@@ -55,8 +55,8 @@ app.use(function(req, res, next){
 
 //requiring routes
 app.use(indexRoutes);
-app.use("/campgrounds", campgroundRoutes);
-app.use("/campgrounds/:id/comments", commentRoutes);
+app.use("/sechands",sechandRoutes);
+app.use("/sechands/:id/comments", commentRoutes);
 
 
 

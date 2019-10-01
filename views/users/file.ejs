@@ -1,6 +1,6 @@
 <% include ../partials/header %>
 <div class="card" style="width: 18rem;">
-  <img src="<%= user.avatar %>" class="card-img-top" alt="...">
+	   <img src="http://img.51miz.com/Element/00/88/08/84/72f298b9_E880884_d0f63115.png!/quality/90/unsharp/true/compress/true/format/png" class="card-img-top" alt="">
   <div class="card-body">
     <h5 class="card-title"><%= user.first  + " " + user.last %></h5>
     <p class="card-text"></p>
@@ -14,13 +14,13 @@
 </div>
 
 <div class="row">
-		<% campgrounds.forEach(function(cam){ %>
+		<% sechands.forEach(function(cam){ %>
 			<div class="col-md-3 col-sm-6">
 				<div class="card text-center">
 					<img src="<%= cam.image %>" class="img-fluid" alt="image">
 					<div class="card-body">
 						<p class="card-title"><em><%= cam.name %></em>  -  $<%= cam.price %></p>
-						<a href="/campgrounds/<%= cam._id %>" class="btn btn-primary btn-sm">More info</a>
+						<a href="/sechands/<%= cam._id %>" class="btn btn-primary btn-sm">More info</a>
 					</div>
 				</div>
 			</div>

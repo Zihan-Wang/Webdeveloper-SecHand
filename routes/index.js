@@ -2,14 +2,14 @@ const express = require("express"),
 	  router  = express.Router(),
 	  passport = require("passport"),
 	  User = require("../models/user"),
-	  Campground = require("../models/campground");
+	  Sechand = require("../models/sechand");
 	
 async = require("async");
 const nodemailer= require("nodemailer");
 const crypto = require("crypto");
 
 router.get("/", (req, res) => {
-	res.render("campgrounds/landing");
+	res.render("sechands/landing");
 })
 
 router.get("/register",(req,res)=>{
@@ -21,15 +21,14 @@ router.post("/register",(req,res)=>{
 		username: req.body.username, 
 		first: req.body.first, 
 		last: req.body.last,
-		email: req.body.email,
-		avatar: req.body.avatar}), req.body.password, (err, user)=>{
+		email: req.body.email}), req.body.password, (err, user)=>{
 		if(err){
 			req.flash("error", err.message);
 			return res.redirect("/register");
 		}
 		passport.authenticate("local")(req, res, function(){
 			req.flash("success", "Welcome !!!")
-			res.redirect("/campgrounds");
+			res.redirect("/sechands");
 		})
 	})
 })
@@ -40,7 +39,7 @@ router.get("/login", (req, res)=>{
 })
 
 router.post("/login", passport.authenticate("local", {
-	successRedirect: "/campgrounds",
+	successRedirect: "/sechands",
 	failureRedirect: "/login"
 }), (req, res)=>{
 })
@@ -49,7 +48,7 @@ router.post("/login", passport.authenticate("local", {
 router.get("/logout", (req, res)=>{
 	req.logout();
 	req.flash("success","Logged you out")
-	res.redirect("/campgrounds");
+	res.redirect("/sechands");
 })
 
 router.get("/users/:id", (req, res)=>{
@@ -59,13 +58,13 @@ router.get("/users/:id", (req, res)=>{
 			res.redirect("/");
 		}
 		else {
-			Campground.find().where('author.id').equals(foundUser.id).exec((err, campgrounds)=>{
+			Sechand.find().where('author.id').equals(foundUser.id).exec((err, sechands)=>{
 				if(err) {
 					req.flash("error", "wrong operation");
 					res.redirect("/");
 				}
 				else {
-					res.render("users/file", {user: foundUser, campgrounds: campgrounds})
+					res.render("users/file", {user: foundUser, sechands: sechands})
 				}
 			})
 		}
@@ -183,7 +182,7 @@ router.post('/reset/:token', function(req, res) {
       });
     }
   ], function(err) {
-    res.redirect('/campgrounds');
+    res.redirect('/sechands');
   });
 });
 
