@@ -43,7 +43,7 @@ router.get("/", (req,res) => {
 				console.log("err");
 			}
 			else {
-				res.render("Sechands/index",{sechands: allSechands});
+				res.render("sechands/index",{sechands: allSechands});
 			}
 		})
 	}

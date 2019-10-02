@@ -27,7 +27,6 @@ app.use(express.static(__dirname + "/public"));
 app.use(flash());
 mongoose.connect(process.env.DATABASEURL);
 
-console.log(process.env.DATABASEURL);
 
 app.use(require("express-session")({
 	secret: "my name is wang",
